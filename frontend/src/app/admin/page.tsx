@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, FormEvent } from 'react';
+import { useState, useEffect, FormEvent} from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -57,7 +57,7 @@ export default function AdminPanel() {
     }
   };
 
-  const handleLogin = async (e.React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e:FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const res = await fetch(`${API_URL}/auth/login`, {
