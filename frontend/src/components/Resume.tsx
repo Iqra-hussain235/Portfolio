@@ -95,12 +95,12 @@ export default function Resume() {
                   viewport={{ once: true }}
                   className="relative"
                 >
-                  <div className="aspect-[3/4] bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-xl flex items-center justify-center border border-purple-500/30">
-                    <div className="text-center p-8">
-                      <FileText className="w-24 h-24 text-purple-400 mx-auto mb-4" />
-                      <p className="text-gray-400">Resume Preview</p>
-                      <p className="text-sm text-gray-500 mt-2">Click to view full resume</p>
-                    </div>
+                  <div className="aspect-[3/4] overflow-hidden rounded-xl border border-purple-500/30 bg-gradient-to-br from-purple-900/30 to-pink-900/30">
+                    <img
+                      src="/resume-preview.png"
+                      alt="Resume preview"
+                      className="h-full w-full object-cover"
+                    />
                   </div>
                   <motion.div
                     className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center"
@@ -125,60 +125,12 @@ export default function Resume() {
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-6">
-            <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-lg p-8 min-h-[500px]">
-              <div className="text-center mb-8">
-                <h3 className="text-3xl font-bold text-white mb-2">Iqra Hussain</h3>
-                <p className="text-purple-300 text-xl">Full Stack Developer + AI/ML Engineer</p>
-              </div>
-
-              <div className="space-y-6">
-                <div>
-                  <h4 className="text-xl font-bold text-purple-400 mb-3">Summary</h4>
-                  <p className="text-gray-300">
-                    B.Tech Computer Science (AI & ML) student passionate about building scalable web applications, 
-                    AI-powered systems, and modern digital experiences. Specialized in Full Stack Development using MERN, 
-                    Backend with Node.js & Express, and AI integrations using Gemini API and LangChain.
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-bold text-purple-400 mb-3">Skills</h4>
-                  <div className="grid grid-cols-2 gap-2 text-gray-300">
-                    <p>• Full Stack Development (MERN)</p>
-                    <p>• Node.js & Express.js</p>
-                    <p>• React & Next.js</p>
-                    <p>• MongoDB & MySQL</p>
-                    <p>• Gemini API & LangChain</p>
-                    <p>• Machine Learning</p>
-                    <p>• REST API & JWT</p>
-                    <p>• Git & GitHub</p>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-bold text-purple-400 mb-3">Experience</h4>
-                  <div className="text-gray-300">
-                    <p className="font-semibold text-white">Backend Developer - Softevia</p>
-                    <p className="text-sm">June 2026 – Present</p>
-                    <p className="mt-2">Developed and maintained scalable backend APIs, implemented authentication systems, 
-                    optimized database queries, and collaborated with frontend team on feature integration.</p>
-                  </div>
-                </div>
-
-                <div>
-                  <h4 className="text-xl font-bold text-purple-400 mb-3">Education</h4>
-                  <div className="space-y-3 text-gray-300">
-                    <div>
-                      <p className="font-semibold text-white">B.Tech AI & ML - Moradabad Institute of Technology</p>
-                      <p className="text-sm">2023 – 2027 | CGPA: 7.6</p>
-                    </div>
-                    <div>
-                      <p className="font-semibold text-white">Class XII - Adam Eve's Convent School</p>
-                      <p className="text-sm">2021 – 2023 | 70%</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div className="rounded-lg border border-purple-500/20 bg-black/20 p-2">
+              <img
+                src="/resume-preview.png"
+                alt="Resume Preview"
+                className="min-h-[500px] w-full rounded-lg border-0 object-contain"
+              />
             </div>
 
             <motion.button

@@ -45,6 +45,9 @@ export default function Hero() {
 
   return (
     <section className="min-h-screen relative overflow-hidden bg-gradient-to-br from-black via-[#0a0a1a] to-[#1a0a2e]">
+      <div className="absolute inset-0 bg-[url('/proimg.jpeg')] bg-cover bg-center bg-no-repeat bg-fixed opacity-30" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/55 via-black/45 to-purple-950/50" />
+
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse" />
@@ -76,23 +79,19 @@ export default function Hero() {
 
       <div className="container mx-auto px-4 py-20 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-80px)]">
-          {/* Left Side - Video */}
           <motion.div
-            className="relative"
+            className="relative mx-auto w-full max-w-[520px]"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative rounded-2xl overflow-hidden glassmorphism border border-purple-500/30">
-              <div className="aspect-video bg-gradient-to-br from-purple-900/50 to-pink-900/50 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="text-6xl mb-4">👋</div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Hello</h3>
-                  <p className="text-xl text-purple-300">My name is Iqra Hussain</p>
-                </div>
-              </div>
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <div className="relative rounded-[2rem] overflow-hidden border border-purple-500/30 bg-gradient-to-br from-purple-900/40 to-pink-900/40 p-2 shadow-[0_0_40px_rgba(168,85,247,0.25)]">
+              <img
+                src="/homeimg.jpeg"
+                alt="Iqra Hussain"
+                className="w-full h-[320px] sm:h-[400px] md:h-[460px] lg:h-[520px] object-cover rounded-[1.5rem]"
+              />
+              <div className="absolute inset-0 rounded-[1.5rem] bg-gradient-to-t from-black/25 via-transparent to-transparent" />
             </div>
           </motion.div>
 
@@ -115,14 +114,16 @@ export default function Hero() {
 
             {/* Buttons */}
             <div className="flex flex-wrap gap-4">
-              <motion.button
+              <motion.a
+                href="/Resume1.pdf"
+                download
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full font-semibold flex items-center gap-2 hover:shadow-lg hover:shadow-purple-500/50 transition-all"
               >
                 <Download className="w-5 h-5" />
                 Download Resume
-              </motion.button>
+              </motion.a>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -144,7 +145,7 @@ export default function Hero() {
             {/* Social Links */}
             <div className="flex gap-4">
               <motion.a
-                href="https://github.com"
+                href="https://github.com/Iqra-hussain235"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, y: -5 }}
@@ -156,7 +157,7 @@ export default function Hero() {
                 </svg>
               </motion.a>
               <motion.a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/iqra-hussain-5158222a3"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.2, y: -5 }}

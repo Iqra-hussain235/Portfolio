@@ -57,8 +57,12 @@ export default function About() {
           >
             <Card className="glassmorphism border border-purple-500/30 bg-white/5 backdrop-blur-lg">
               <CardContent className="p-8">
-                <div className="aspect-square bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-xl mb-6 flex items-center justify-center">
-                  <div className="text-8xl">👩‍💻</div>
+                <div className="aspect-square overflow-hidden rounded-xl mb-6 border border-purple-500/30 bg-gradient-to-br from-purple-900/30 to-pink-900/30">
+                  <img
+                    src="/proimg.jpeg"
+                    alt="Iqra Hussain"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Iqra Hussain</h3>
                 <p className="text-purple-300 mb-4">Full Stack Developer + AI/ML Engineer</p>
@@ -68,7 +72,7 @@ export default function About() {
                 </div>
                 <div className="flex items-center gap-2 text-gray-400 mb-2">
                   <Mail className="w-4 h-4" />
-                  <span>iqra@example.com</span>
+                  <span>iqrah7085@gmail.com</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-400">
                   <Calendar className="w-4 h-4" />
@@ -80,18 +84,20 @@ export default function About() {
             {/* Social Cards */}
             <div className="grid grid-cols-2 gap-4">
               {[
-                { name: 'LinkedIn', icon: 'in', color: 'from-blue-500 to-blue-600' },
-                { name: 'GitHub', icon: 'gh', color: 'from-gray-600 to-gray-700' },
-                { name: 'LeetCode', icon: 'lc', color: 'from-orange-500 to-orange-600' },
-                { name: 'Email', icon: 'em', color: 'from-purple-500 to-purple-600' },
+                { name: 'Google Drive', icon: 'G', color: 'from-green-500 to-emerald-500', href: 'https://drive.google.com/drive/folders/1CqBV3MyCQvUV8DIPdvj1bGmhpor3uJJS' },
+                { name: 'GitHub', icon: 'GH', color: 'from-gray-600 to-gray-700', href: 'https://github.com/Iqra-hussain235/' },
+                { name: 'Email', icon: '✉️', color: 'from-purple-500 to-pink-500', href: 'mailto:iqrah7085@gmail.com' },
+                { name: 'Resume', icon: '📄', color: 'from-blue-500 to-blue-600', href: '/Resume1.pdf' },
               ].map((social, index) => (
                 <motion.a
                   key={index}
-                  href="#"
+                  href={social.href}
+                  target={social.href.startsWith('http') ? '_blank' : undefined}
+                  rel={social.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   whileHover={{ scale: 1.05, y: -5 }}
                   className={`p-4 rounded-xl bg-gradient-to-r ${social.color} bg-opacity-20 border border-white/10 flex items-center gap-3 hover:shadow-lg hover:shadow-purple-500/20 transition-all`}
                 >
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white font-bold">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white font-bold text-sm">
                     {social.icon}
                   </div>
                   <span className="text-white font-semibold">{social.name}</span>

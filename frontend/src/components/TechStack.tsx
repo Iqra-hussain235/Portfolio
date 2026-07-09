@@ -7,35 +7,35 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const techCategories = {
   Languages: [
-    { name: 'C++', icon: '⚡', color: 'from-blue-500 to-blue-600' },
-    { name: 'JavaScript', icon: '📜', color: 'from-yellow-500 to-yellow-600' },
-    { name: 'Python', icon: '🐍', color: 'from-green-500 to-green-600' },
-    { name: 'HTML', icon: '🌐', color: 'from-orange-500 to-orange-600' },
-    { name: 'CSS', icon: '🎨', color: 'from-blue-400 to-blue-500' },
-    { name: 'C', icon: '⚙️', color: 'from-gray-500 to-gray-600' },
+    { name: 'C++', icon: '⚡', color: 'from-blue-500 to-blue-600', glow: 'shadow-blue-500/40' },
+    { name: 'JavaScript', icon: '📜', color: 'from-yellow-500 to-yellow-600', glow: 'shadow-yellow-500/40' },
+    { name: 'Python', icon: '🐍', color: 'from-green-500 to-green-600', glow: 'shadow-green-500/40' },
+    { name: 'HTML', icon: '🌐', color: 'from-orange-500 to-orange-600', glow: 'shadow-orange-500/40' },
+    { name: 'CSS', icon: '🎨', color: 'from-blue-400 to-blue-500', glow: 'shadow-cyan-400/40' },
+    { name: 'C', icon: '⚙️', color: 'from-gray-500 to-gray-600', glow: 'shadow-gray-400/40' },
   ],
   Frameworks: [
-    { name: 'React', icon: '⚛️', color: 'from-cyan-500 to-cyan-600' },
-    { name: 'Next.js', icon: '▲', color: 'from-black to-gray-800' },
-    { name: 'Node.js', icon: '🟢', color: 'from-green-600 to-green-700' },
-    { name: 'Express.js', icon: '🚂', color: 'from-gray-600 to-gray-700' },
-    { name: 'MongoDB', icon: '🍃', color: 'from-green-500 to-green-600' },
-    { name: 'Redux', icon: '🔄', color: 'from-purple-500 to-purple-600' },
+    { name: 'React', icon: '⚛️', color: 'from-cyan-500 to-cyan-600', glow: 'shadow-cyan-400/50' },
+    { name: 'Next.js', icon: '▲', color: 'from-black to-gray-800', glow: 'shadow-white/20' },
+    { name: 'Node.js', icon: '🟢', color: 'from-green-600 to-green-700', glow: 'shadow-green-500/50' },
+    { name: 'Express.js', icon: '🚂', color: 'from-gray-600 to-gray-700', glow: 'shadow-gray-400/40' },
+    { name: 'MongoDB', icon: '🍃', color: 'from-green-500 to-green-600', glow: 'shadow-emerald-400/40' },
+    { name: 'Redux', icon: '🔄', color: 'from-purple-500 to-purple-600', glow: 'shadow-purple-500/45' },
   ],
   AI: [
-    { name: 'Gemini API', icon: '🤖', color: 'from-blue-500 to-purple-600' },
-    { name: 'LangChain', icon: '🔗', color: 'from-indigo-500 to-indigo-600' },
-    { name: 'Streamlit', icon: '📊', color: 'from-red-500 to-red-600' },
-    { name: 'Machine Learning', icon: '🧠', color: 'from-pink-500 to-pink-600' },
-    { name: 'Deep Learning', icon: '🔮', color: 'from-violet-500 to-violet-600' },
+    { name: 'Gemini API', icon: '🤖', color: 'from-blue-500 to-purple-600', glow: 'shadow-indigo-500/45' },
+    { name: 'LangChain', icon: '🔗', color: 'from-indigo-500 to-indigo-600', glow: 'shadow-indigo-400/45' },
+    { name: 'Streamlit', icon: '📊', color: 'from-red-500 to-red-600', glow: 'shadow-red-500/45' },
+    { name: 'Machine Learning', icon: '🧠', color: 'from-pink-500 to-pink-600', glow: 'shadow-pink-500/45' },
+    { name: 'Deep Learning', icon: '🔮', color: 'from-violet-500 to-violet-600', glow: 'shadow-violet-500/45' },
   ],
   Tools: [
-    { name: 'Git', icon: '📦', color: 'from-orange-500 to-red-500' },
-    { name: 'GitHub', icon: '🐙', color: 'from-gray-700 to-gray-800' },
-    { name: 'VS Code', icon: '💻', color: 'from-blue-500 to-blue-600' },
-    { name: 'Postman', icon: '📮', color: 'from-orange-500 to-orange-600' },
-    { name: 'MongoDB Atlas', icon: '☁️', color: 'from-green-500 to-green-600' },
-    { name: 'Vercel', icon: '▲', color: 'from-black to-white' },
+    { name: 'Git', icon: '📦', color: 'from-orange-500 to-red-500', glow: 'shadow-orange-500/45' },
+    { name: 'GitHub', icon: '🐙', color: 'from-gray-700 to-gray-800', glow: 'shadow-gray-400/35' },
+    { name: 'VS Code', icon: '💻', color: 'from-blue-500 to-blue-600', glow: 'shadow-blue-500/45' },
+    { name: 'Postman', icon: '📮', color: 'from-orange-500 to-orange-600', glow: 'shadow-orange-400/45' },
+    { name: 'MongoDB Atlas', icon: '☁️', color: 'from-green-500 to-green-600', glow: 'shadow-emerald-400/45' },
+    { name: 'Vercel', icon: '▲', color: 'from-black to-white', glow: 'shadow-white/25' },
   ],
 };
 
@@ -90,25 +90,31 @@ export default function TechStack() {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid md:grid-cols-2 xl:grid-cols-4 gap-6"
         >
           {Object.entries(techCategories).map(([category, items], categoryIndex) => (
             <motion.div key={category} variants={itemVariants}>
-              <Card className="glassmorphism border border-purple-500/30 bg-white/5 backdrop-blur-lg h-full">
+              <Card className="h-full border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_0_35px_rgba(85,61,255,0.14)]">
                 <CardContent className="p-6">
-                  <h3 className="text-xl font-bold text-white mb-4 text-center">{category}</h3>
-                  <div className="space-y-3">
+                  <div className="mb-5 flex items-center gap-3">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10 text-2xl text-white/90 shadow-lg shadow-white/10">
+                      {category === 'Languages' ? '💻' : category === 'Frameworks' ? '⚛️' : category === 'AI' ? '🤖' : '🛠️'}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-semibold text-white">{category}</h3>
+                      <p className="text-sm text-white/60">Top {category.toLowerCase()} skills</p>
+                    </div>
+                  </div>
+
+                  <div className="grid gap-3">
                     {items.map((item, itemIndex) => (
                       <motion.div
                         key={item.name}
-                        whileHover={{ scale: 1.05, x: 5 }}
-                        className={`p-3 rounded-lg bg-gradient-to-r ${item.color} bg-opacity-20 border border-white/10 flex items-center gap-3 transition-all`}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-                        transition={{ delay: categoryIndex * 0.1 + itemIndex * 0.05 }}
+                        whileHover={{ scale: 1.03 }}
+                        transition={{ type: 'spring', stiffness: 260, damping: 18 }}
+                        className="rounded-full border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-white/90 shadow-sm backdrop-blur-sm transition-all duration-300 hover:bg-white/10 hover:text-white"
                       >
-                        <span className="text-2xl">{item.icon}</span>
-                        <span className="text-white font-medium">{item.name}</span>
+                        {item.name}
                       </motion.div>
                     ))}
                   </div>

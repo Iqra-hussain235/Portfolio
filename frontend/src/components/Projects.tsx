@@ -16,8 +16,8 @@ const projects = [
     techStack: ['Next.js', 'React', 'Node.js', 'MongoDB', 'Tailwind CSS', 'Stripe'],
     image: '🏠',
     demoVideo: '',
-    liveDemo: '#',
-    github: '#',
+    liveDemo: 'https://airbnb-g0t0.onrender.com/listings',
+    github: 'https://github.com/Iqra-hussain235/Project',
   },
   {
     id: 2,
@@ -32,32 +32,32 @@ const projects = [
   {
     id: 3,
     title: 'ILM GPT',
-    description: 'Custom GPT-based chatbot for Islamic learning materials with context-aware responses and multilingual support.',
-    techStack: ['Next.js', 'OpenAI API', 'React', 'Node.js', 'MongoDB', 'TypeScript'],
+    description: 'Built a conversational AI system with chat history and session management.',
+    techStack: [ 'Gemini API', 'React', 'Node.js', 'MongoDB', 'JavaScript','Postman'],
     image: '📚',
     demoVideo: '',
     liveDemo: '#',
-    github: '#',
+    github: 'https://github.com/Iqra-hussain235/Chat-GPT-Clone',
   },
   {
     id: 4,
-    title: 'Food Recipe App',
-    description: 'Recipe discovery platform with search functionality, ingredient-based filtering, and meal planning features.',
-    techStack: ['React', 'Node.js', 'Express', 'MongoDB', 'REST API', 'JWT'],
+    title: 'Recipe App',
+    description: 'A modern recipe discovery app with smooth search, ingredient-based filters, and a clean UI for browsing delicious meals.',
+    techStack: ['React', 'Vercel', 'CSS', 'API', 'Responsive UI'],
     image: '🍳',
     demoVideo: '',
-    liveDemo: '#',
-    github: '#',
+    liveDemo: 'https://recipe-app-eta-sepia.vercel.app/',
+    github: 'https://github.com/Iqra-hussain235/recipe-app',
   },
   {
     id: 5,
-    title: 'Car Hub Showroom',
-    description: 'Automotive marketplace with vehicle listings, advanced search filters, virtual tours, and dealer management system.',
-    techStack: ['Next.js', 'React', 'Node.js', 'MongoDB', 'Cloudinary', 'Stripe'],
+    title: 'Car Showroom',
+    description: 'A polished car showroom experience with featured cars, search filters, and elegant product cards for browsing vehicles.',
+    techStack: ['React', 'Vercel', 'Tailwind CSS', 'UI/UX', 'Responsive Design'],
     image: '🚗',
     demoVideo: '',
-    liveDemo: '#',
-    github: '#',
+    liveDemo: 'https://carshowroom-ebon.vercel.app/',
+    github: 'https://github.com/Iqra-hussain235/car-showroom',
   },
   {
     id: 6,
@@ -164,10 +164,13 @@ export default function Projects() {
               className="cursor-pointer"
             >
               <Card className="glassmorphism border border-purple-500/30 bg-white/5 backdrop-blur-lg h-full overflow-hidden group">
-                <div className="relative h-48 bg-gradient-to-br from-purple-900/30 to-pink-900/30 flex items-center justify-center overflow-hidden">
-                  <div className="text-6xl group-hover:scale-110 transition-transform duration-300">{project.image}</div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 left-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="relative h-48 bg-gradient-to-br from-purple-900/40 via-[#1f1038] to-pink-900/40 flex items-center justify-center overflow-hidden">
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.16),_transparent_45%)]" />
+                  <div className="text-6xl drop-shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-transform duration-300 group-hover:scale-110">
+                    {project.image}
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute bottom-4 left-4 right-4 flex gap-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                     {project.demoVideo && (
                       <button className="flex-1 bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors">
                         <Play className="w-4 h-4" />

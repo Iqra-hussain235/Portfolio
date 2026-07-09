@@ -79,7 +79,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-gray-400 text-sm">Email</p>
-                      <p className="text-white font-medium">iqra@example.com</p>
+                      <p className="text-white font-medium">iqrah7085@gmail.com</p>
                     </div>
                   </div>
 
@@ -88,8 +88,10 @@ export default function Contact() {
                       <Phone className="w-5 h-5 text-pink-400" />
                     </div>
                     <div>
-                      <p className="text-gray-400 text-sm">Phone</p>
-                      <p className="text-white font-medium">+91 XXXXX XXXXX</p>
+                      <p className="text-gray-400 text-sm">WhatsApp</p>
+                      <a href="https://wa.me/917900765352" target="_blank" rel="noopener noreferrer" className="text-white font-medium hover:text-purple-300 transition-colors">
+                        +91 79007 65352
+                      </a>
                     </div>
                   </div>
 
@@ -111,9 +113,9 @@ export default function Contact() {
                 <h3 className="text-xl font-bold text-white mb-4">Social Links</h3>
                 <div className="flex gap-4">
                   {[
-                    { name: 'GitHub', icon: '🐙', href: 'https://github.com' },
-                    { name: 'LinkedIn', icon: 'in', href: 'https://linkedin.com' },
-                    { name: 'LeetCode', icon: 'lc', href: 'https://leetcode.com' },
+                    { name: 'GitHub', icon: '🐙', href: 'https://github.com/Iqra-hussain235/' },
+                    { name: 'LinkedIn', icon: 'in', href: 'https://www.linkedin.com/in/iqra-hussain-5158222a3' },
+                    { name: 'WhatsApp', icon: '💬', href: 'https://wa.me/917900765352' },
                   ].map((social, index) => (
                     <motion.a
                       key={index}
