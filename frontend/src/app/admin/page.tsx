@@ -32,7 +32,7 @@ export default function AdminPanel() {
     }
   }, []);
 
-  const fetchData = async (authToken) => {
+  const fetchData = async (authToken:string) => {
     try {
       const [projectsRes, contactsRes, statsRes] = await Promise.all([
         fetch(`${API_URL}/projects`),
