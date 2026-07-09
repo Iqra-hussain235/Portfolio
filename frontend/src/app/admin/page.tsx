@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -33,6 +33,7 @@ export default function AdminPanel() {
   }, []);
 
   const fetchData = async (authToken:string) => {
+
     try {
       const [projectsRes, contactsRes, statsRes] = await Promise.all([
         fetch(`${API_URL}/projects`),
@@ -56,7 +57,7 @@ export default function AdminPanel() {
     }
   };
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e.React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const res = await fetch(`${API_URL}/auth/login`, {

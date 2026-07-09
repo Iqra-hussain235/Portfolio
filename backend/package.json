@@ -27,5 +27,9 @@
   },
   "devDependencies": {
     "nodemon": "^3.0.2"
+  },
+  "compilerOptions": {
+    "strict": false,
+    "noImplicitAny": false
   }
 }
