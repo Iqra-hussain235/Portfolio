@@ -9,7 +9,7 @@ export default function CustomCursor() {
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+      setMousePosition({ x: e.clientX, y: e.clientY });   
     };
 
     const handleMouseOver = (e: MouseEvent) => {
