@@ -15,11 +15,13 @@ export default function AdminPanel() {
   const [token, setToken] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [projects, setProjects] = useState([]);
-  const [contacts, setContacts] = useState([]);
+  const [projects, setProjects] = useState<any[]>([]);
+
+  const [contacts, setContacts] = useState<any[]>([]);
   const [stats, setStats] = useState({ projectCount: 0, contactCount: 0 });
-  const [editingProject, setEditingProject] = useState(null);
+  const [editingProject, setEditingProject] = useState<any>(null);
   const [isProjectDialogOpen, setIsProjectDialogOpen] = useState(false);
+  
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
 
@@ -88,13 +90,15 @@ export default function AdminPanel() {
     toast.success('Logged out successfully');
   };
 
-  const handleSaveProject = async (e) => {
+  const handleSaveProject = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const formData = new FormData(e.currentTarget);
     const projectData = {
       title: formData.get('title'),
       description: formData.get('description'),
-      techStack: formData.get('techStack').split(',').map(s => s.trim()),
+      techStack: (formData.get('techStack') as string)
+  .split(',')
+  .map((s: string) => s.trim()),
       image: formData.get('image'),
       demoVideo: formData.get('demoVideo'),
       liveDemo: formData.get('liveDemo'),
@@ -103,7 +107,7 @@ export default function AdminPanel() {
 
     try {
       const url = editingProject
-        ? `${API_URL}/projects/${editingProject._id}`
+        ?`${API_URL}/projects/${editingProject._id}`
         : `${API_URL}/projects`;
       const method = editingProject ? 'PUT' : 'POST';
 
@@ -129,11 +133,11 @@ export default function AdminPanel() {
     }
   };
 
-  const handleDeleteProject = async (id) => {
+  const handleDeleteProject = async (id: string) => {
     if (!confirm('Are you sure you want to delete this project?')) return;
 
     try {
-      const res = await fetch(`${API_URL}/projects/${id}`, {
+      const res = await fetch(`${API_URL}/projects/${id:string}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -148,6 +152,7 @@ export default function AdminPanel() {
       toast.error('Failed to delete project');
     }
   };
+  
 
   const handleDeleteContact = async (id) => {
     if (!confirm('Are you sure you want to delete this message?')) return;
@@ -372,7 +377,7 @@ export default function AdminPanel() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {projects.map((project) => (
+              {projects.map((project:any) => (
                 <div
                   key={project._id}
                   className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-purple-500/20"
@@ -381,7 +386,7 @@ export default function AdminPanel() {
                     <h3 className="font-semibold text-white">{project.title}</h3>
                     <p className="text-gray-400 text-sm line-clamp-1">{project.description}</p>
                     <div className="flex flex-wrap gap-1 mt-2">
-                      {project.techStack?.slice(0, 3).map((tech) => (
+                      {project.techStack?.slice(0, 3).map((tech:string) => (
                         <Badge key={tech} variant="secondary" className="bg-purple-500/20 text-purple-300 text-xs">
                           {tech}
                         </Badge>
@@ -422,7 +427,7 @@ export default function AdminPanel() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {contacts.map((contact) => (
+              {contacts.map((contact:any) => (
                 <div
                   key={contact._id}
                   className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-purple-500/20"
