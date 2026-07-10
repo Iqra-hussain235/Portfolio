@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, FormEvent} from 'react';
+import { useState, useEffect, FormEvent, ChangeEvent } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -10,17 +10,45 @@ import { Badge } from '@/components/ui/badge';
 import { Trash2, Edit, Plus, LogOut, BarChart3, MessageSquare, FolderOpen } from 'lucide-react';
 import { toast } from 'sonner';
 
-export default function AdminPanel() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [token, setToken] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [projects, setProjects] = useState<any[]>([]);
+interface Project {
+  _id: string;
+  title: string;
+  description: string;
+  techStack: string[];
+  image?: string;
+  demoVideo?: string;
+  liveDemo?: string;
+  github?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
 
-  const [contacts, setContacts] = useState<any[]>([]);
-  const [stats, setStats] = useState({ projectCount: 0, contactCount: 0 });
-  const [editingProject, setEditingProject] = useState<any>(null);
-  const [isProjectDialogOpen, setIsProjectDialogOpen] = useState(false);
+interface Contact {
+  _id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  subject: string;
+  message: string;
+  createdAt?: string;
+}
+
+interface Stats {
+  projectCount: number;
+  contactCount: number;
+  recentContacts?: Contact[];
+}
+
+export default function AdminPanel() {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [token, setToken] = useState<string>('');
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [stats, setStats] = useState<Stats>({ projectCount: 0, contactCount: 0 });
+  const [editingProject, setEditingProject] = useState<Project | null>(null);
+  const [isProjectDialogOpen, setIsProjectDialogOpen] = useState<boolean>(false);
   
 
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
@@ -34,7 +62,7 @@ export default function AdminPanel() {
     }
   }, []);
 
-  const fetchData = async (authToken:string) => {
+  const fetchData = async (authToken: string): Promise<void> => {
 
     try {
       const [projectsRes, contactsRes, statsRes] = await Promise.all([
@@ -59,7 +87,7 @@ export default function AdminPanel() {
     }
   };
 
-  const handleLogin = async (e:FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     try {
       const res = await fetch(`${API_URL}/auth/login`, {
@@ -90,7 +118,7 @@ export default function AdminPanel() {
     toast.success('Logged out successfully');
   };
 
-  const handleSaveProject = async (e: FormEvent<HTMLFormElement>) => {
+  const handleSaveProject = async (e: FormEvent<HTMLFormElement>): Promise<void> => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     const projectData = {
@@ -107,7 +135,7 @@ export default function AdminPanel() {
 
     try {
       const url = editingProject
-        ?`${API_URL}/projects/${editingProject._id}`
+        ? `${API_URL}/projects/${editingProject._id}`
         : `${API_URL}/projects`;
       const method = editingProject ? 'PUT' : 'POST';
 
@@ -137,7 +165,7 @@ export default function AdminPanel() {
     if (!confirm('Are you sure you want to delete this project?')) return;
 
     try {
-      const res = await fetch(`${API_URL}/projects/${id:string}`, {
+      const res = await fetch(`${API_URL}/projects/${id}`, {
         method: 'DELETE',
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -154,7 +182,7 @@ export default function AdminPanel() {
   };
   
 
-  const handleDeleteContact = async (id) => {
+  const handleDeleteContact = async (id: string): Promise<void> => {
     if (!confirm('Are you sure you want to delete this message?')) return;
 
     try {
@@ -190,7 +218,7 @@ export default function AdminPanel() {
                 <Input
                   type="text"
                   value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
                   required
                   className="bg-white/5 border-purple-500/30 text-white placeholder-gray-500"
                   placeholder="Enter username"
@@ -201,7 +229,7 @@ export default function AdminPanel() {
                 <Input
                   type="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                   required
                   className="bg-white/5 border-purple-500/30 text-white placeholder-gray-500"
                   placeholder="Enter password"
@@ -284,7 +312,7 @@ export default function AdminPanel() {
             <div className="flex justify-between items-center">
               <CardTitle className="text-xl font-bold text-white">Projects</CardTitle>
               <Dialog open={isProjectDialogOpen} onOpenChange={setIsProjectDialogOpen}>
-                <DialogTrigger asChild>
+                <DialogTrigger>
                   <Button
                     onClick={() => setEditingProject(null)}
                     className="bg-gradient-to-r from-purple-500 to-pink-500"
@@ -377,7 +405,7 @@ export default function AdminPanel() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {projects.map((project:any) => (
+              {projects.map((project: Project) => (
                 <div
                   key={project._id}
                   className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-purple-500/20"
@@ -386,7 +414,7 @@ export default function AdminPanel() {
                     <h3 className="font-semibold text-white">{project.title}</h3>
                     <p className="text-gray-400 text-sm line-clamp-1">{project.description}</p>
                     <div className="flex flex-wrap gap-1 mt-2">
-                      {project.techStack?.slice(0, 3).map((tech:string) => (
+                      {project.techStack?.slice(0, 3).map((tech: string) => (
                         <Badge key={tech} variant="secondary" className="bg-purple-500/20 text-purple-300 text-xs">
                           {tech}
                         </Badge>
@@ -427,7 +455,7 @@ export default function AdminPanel() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {contacts.map((contact:any) => (
+              {contacts.map((contact: Contact) => (
                 <div
                   key={contact._id}
                   className="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-purple-500/20"
