@@ -24,14 +24,14 @@ const educationData = [
     cgpa: '70%',
     status: 'Completed',
   },
-  {
-    qualification: 'Class X',
-    institute: 'Adam Eve\'s Convent School',
-    board: 'CBSE',
-    year: '2019 – 2021',
-    cgpa: 'N/A',
-    status: 'Completed',
-  },
+  // {
+  //   qualification: 'Class X',
+  //   institute: 'Adam Eve\'s Convent School',
+  //   board: 'CBSE',
+  //   year: '2019 – 2021',
+  //   cgpa: 'N/A',
+  //   status: 'Completed',
+  // },
 ];
 
 export default function Education() {
